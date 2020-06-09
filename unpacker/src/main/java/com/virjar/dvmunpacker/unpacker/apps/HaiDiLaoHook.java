@@ -17,9 +17,8 @@ public class HaiDiLaoHook implements UnPackerEntry.PackageProcessor {
                     @Override
                     protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                         Log.i("weijia", "begin of unpack: " + param.thisObject.getClass().getName());
-                        if ("com.haidilao.hailehui.biz.impl.activity.SecondActivity".equals(param.thisObject.getClass().getName())) {
-                            Dumper.dumpDexWithoutTempFile(param.thisObject);
-                        }
+                        Dumper.dumpDexWithoutTempFile(param.thisObject);
+
                     }
                 }
         );
