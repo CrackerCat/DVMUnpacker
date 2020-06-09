@@ -1,0 +1,2 @@
+include ':unpacker', ':moduleloader', ':commons',
+        ':baksmali'
