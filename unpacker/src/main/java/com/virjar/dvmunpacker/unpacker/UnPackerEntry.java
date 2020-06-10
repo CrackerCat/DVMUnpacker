@@ -3,6 +3,8 @@ package com.virjar.dvmunpacker.unpacker;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.multidex.MultiDex;
+
 import com.virjar.dvmunpacker.commons.Constants;
 import com.virjar.dvmunpacker.unpacker.apps.HaiDiLaoHook;
 
@@ -17,6 +19,7 @@ public class UnPackerEntry {
 
     public static void process(Context context, XC_LoadPackage.LoadPackageParam lpparam) {
 
+        MultiDex.install(context);
         SharedObject.context = context;
         SharedObject.lpparam = lpparam;
 

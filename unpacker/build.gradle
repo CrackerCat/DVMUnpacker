@@ -41,11 +41,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+            multiDexKeepProguard file('multidex-config.pro')
         }
 
         //debug ,也使用release的key，hermes代码无法在线调试，所以没有debug的意义
         debug {
             signingConfig signingConfigs.release
+            multiDexKeepProguard file('multidex-config.pro')
         }
     }
     externalNativeBuild {
