@@ -58,7 +58,7 @@ void *handle = getSymCompat(
 - 32位： https://github.com/ele7enxxh/Android-Inline-Hook
 - 64位：https://github.com/Rprop/And64InlineHook
 
-有大佬的代码抄，还是很舒服的
+有大佬的代码抄，还是很舒服的。 为什么需要hook，因为hook了这个函数才能拦截到方法执行流程。才能拦截到ArtMethod对象。hook了还可以做methodTrace
 
 ### ArtMethod -> DexFile -> Dex
 这一步有点麻烦，在dumpMethod的时候，需要知道这个Method在那个Dex上面，如果是编译系统方式，有一大堆API可以调用。
