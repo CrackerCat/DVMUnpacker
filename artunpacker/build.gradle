@@ -9,7 +9,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        applicationId "com.virjar.dvmunpacker.unpacker"
+        applicationId "com.virjar.artunpacker.unpacker"
         minSdkVersion 19
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 19
@@ -41,13 +41,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-            multiDexKeepProguard file('multidex-config.pro')
         }
 
         //debug ,也使用release的key，hermes代码无法在线调试，所以没有debug的意义
         debug {
             signingConfig signingConfigs.release
-            multiDexKeepProguard file('multidex-config.pro')
         }
     }
     externalNativeBuild {

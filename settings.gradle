@@ -1,2 +1,2 @@
-include ':unpacker', ':moduleloader', ':commons',
+include ':unpacker','artunpacker', ':moduleloader', ':commons',
         ':baksmali'
