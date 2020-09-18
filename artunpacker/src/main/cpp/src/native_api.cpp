@@ -7,7 +7,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <jni.h>
-#include <inlinehook_32/inlineHook.h>
+#include "inlinehook_32/inlineHook.h"
 #include "base.h"
 #include "dlfcn_nougat.h"
 #include "native_api.h"

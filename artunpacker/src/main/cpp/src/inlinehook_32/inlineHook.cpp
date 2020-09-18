@@ -6,7 +6,7 @@ website: ele7enxxh.com
 modified time: 2015-01-23
 created time: 2015-11-30
 */
-
+extern "C" {
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -333,7 +333,7 @@ static void doInlineHook(struct inlineHookItem *item) {
 
     if (item->proto_addr != NULL) {
         *(item->proto_addr) = TEST_BIT0(item->target_addr) ? (uint32_t *) SET_BIT0(
-                (uint32_t) item->trampoline_instructions) : item->trampoline_instructions;
+                (uint32_t) item->trampoline_instructions) : (uint32_t *)item->trampoline_instructions;
     }
 
     if (TEST_BIT0(item->target_addr)) {
@@ -403,4 +403,6 @@ void inlineHookAll() {
     }
 
     unFreeze(pid);
+}
+
 }

@@ -1,6 +1,6 @@
 #ifndef _RELOCATE_H
 #define _RELOCATE_H
-
+extern "C" {
 #include <stdio.h>
 
 void relocateInstruction(uint32_t target_addr, void *orig_instructions, int length,
@@ -8,4 +8,5 @@ void relocateInstruction(uint32_t target_addr, void *orig_instructions, int leng
                          int *trampoline_boundaries, int *count);
 
 
+}
 #endif
