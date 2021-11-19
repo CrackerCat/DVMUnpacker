@@ -32,7 +32,8 @@
 #include <android/log.h>
 #include <dlfcn.h>
 #include <string>
-#include <arch/arch.h>
+#include "base.h"
+
 
 #define TAG_NAME    "RATEL_NATIVE"
 
@@ -55,7 +56,7 @@
 #define Elf_Sym  Elf32_Sym
 #endif
 
-extern int SDK_INT;
+int SDK_INT;
 
 
 struct ctx {
@@ -78,17 +79,15 @@ int fake_dlclose(void *handle) {
     return 0;
 }
 
-char *rtrim(char *str)
-{
-    if (str == NULL || *str == '\0')
-    {
+char *rtrim(char *str) {
+    if (str == NULL || *str == '\0') {
         return str;
     }
     int len = static_cast<int>(strlen(str));
     char *p = str + len - 1;
-    while (p >= str && isspace(*p))
-    {
-        *p = '\0'; --p;
+    while (p >= str && isspace(*p)) {
+        *p = '\0';
+        --p;
     }
     return str;
 }
@@ -102,7 +101,7 @@ void *fake_dlopen_with_path(const char *libpath, int flags) {
     off_t load_addr, size;
     int k, fd = -1, found = 0;
     char *shoff;
-    char* p;
+    char *p;
     Elf_Ehdr *elf = (Elf_Ehdr *) MAP_FAILED;
 
 #define fatal(fmt, args...) do { log_err(fmt,##args); goto err_exit; } while(0)
@@ -281,7 +280,7 @@ const char *fake_dlerror() {
 void *getSymCompat(const char *filename, const char *name) {
 
     if (SDK_INT >= ANDROID_N) {
-        void* handle = fake_dlopen(const_cast<char *>(filename), RTLD_NOW);
+        void *handle = fake_dlopen(const_cast<char *>(filename), RTLD_NOW);
         if (handle) {
             void *ret = fake_dlsym(handle, name);
             fake_dlclose(handle);

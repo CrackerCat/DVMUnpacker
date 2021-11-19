@@ -12,7 +12,8 @@
 #include <jni.h>
 
 #include <cast.h>
-#include <inlinehook_32/inlineHook.h>
+#include <sys/system_properties.h>
+#include "inlinehook_32/inlineHook.h"
 #include "dex_ratel.h"
 #include "elf_image.h"
 #include "process_map.h"
@@ -306,6 +307,11 @@ Java_com_virjar_artunpacker_ArtUnPacker_enableUnpackComponent(JNIEnv *env, jclas
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *_vm, void *) {
     JNIEnv *env;
     _vm->GetEnv(reinterpret_cast<void **>(&env), JNI_VERSION_1_6);
+
+    char sdk[PROP_VALUE_MAX];
+    __system_property_get("ro.build.version.sdk", sdk);
+    SDK_INT = atoi(sdk);
+
     // 一个artmethod转换函数，CastArtMethod初始化的时候会使用到
     initHideApi();
     //计算一些artMethod的属性偏移，主要包括 accessFlag、MethodIndex、dexCodeItemIndex

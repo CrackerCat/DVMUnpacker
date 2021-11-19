@@ -1,6 +1,6 @@
 #ifndef _INLINEHOOK_H
 #define _INLINEHOOK_H
-
+extern "C" {
 #include <stdio.h>
 #include <stdint.h>
 
@@ -28,5 +28,5 @@ enum ele7en_status inlineHook(uint32_t target_addr);
 
 void inlineHookAll();
 
-
+}
 #endif

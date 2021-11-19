@@ -10,8 +10,8 @@ set(UCRACK_SOURCE
         src/art.cpp
         src/native_api.cpp
         src/inlinehook_64/And64InlineHook.cpp
-        src/inlinehook_32/inlineHook.c
-        src/inlinehook_32/relocate.c
+        src/inlinehook_32/inlineHook.cpp
+        src/inlinehook_32/relocate.cpp
         )
 
 set(LIBRARY_NAME "artunpacker")
